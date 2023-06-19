@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>character Deatail</h2>
+
+
+
+
+    <table class="table table-striped" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            
+            <th>Image</th>
+            <th>Name</th>
+            <th>Real Name</th>
+            <th>Gender</th>
+            <th>Birth</th>
+            <th>Origin</th>
+            <th>Summary</th>
+   
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+           
+            <td><img src="{{comicCharDetail.image.icon_url}}"  height="80px"></td>
+            <td>{{comicCharDetail.name}}</td>
+            <td>{{comicCharDetail.real_name}}</td>
+            <td>{{comicCharDetail.gender}}</td>
+            <td>{{comicCharDetail.birth}}</td>
+            <td>{{comicCharDetail.origin.api_detail_url}}<br>
+                {{comicCharDetail.origin.id}}<br>
+                {{comicCharDetail.origin.name}}
+            </td>  
+            <td>{{comicCharDetail.deck}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>

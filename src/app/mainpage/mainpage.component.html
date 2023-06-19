@@ -1,0 +1,58 @@
+<div class="container" style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-3">
+            <h2> Main Page - </h2>
+        </div>
+        <div class="col-9">
+            <button class="btn btn-sm btn-warning" (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <div style="margin-top: 10px;margin-left: 20px;display: inline-flex;" *ngIf="socialAuthService.authState | async as socialUser">
+        <h5>Hello, {{socialUser.name}}!</h5>
+        <p style="margin-left: 20px;"> Email: <span style="color: crimson;font-weight: 600;">{{socialUser.email}}</span> </p>
+      </div>
+   
+      <div>
+        <input type="text" placeholder="search" [(ngModel)] = "searchText"> 
+      </div>
+    <table class="table table-striped" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            
+            <th>Last Date Update</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Real Name</th>
+            <th>Summary</th>
+            <th>Show Details</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let cbData of comicData | search : searchText | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };' >
+
+            <td>{{cbData.date_last_updated}}</td>
+            <td><img src="{{cbData.image.icon_url}}"  height="80px"></td>
+            <td>{{cbData.name}}</td>
+            <td>{{cbData.real_name}}</td>
+            <td>{{cbData.deck}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="showDetails(cbData)" >Detail</button> </td>
+        </tr>
+    </tbody>
+    </table> <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+
+
+</div>
+
